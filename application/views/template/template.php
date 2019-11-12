@@ -8,7 +8,7 @@
   <title>Never Say Old - Web</title>
   <link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" href="<?= base_url('assets/') ?>img/logo.jpg">
 
   <script src="<?= base_url('assets/') ?>plugins/jquery/jquery.min.js"></script>

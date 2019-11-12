@@ -1,252 +1,74 @@
-
 <div class="content">
   <div class="container">
     <div class="row">
       <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+        <div class="row" align="center">
+          <div class="col-lg-4">
+            <a href="<?= base_url('event') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/event.png') ?>" style="width: 125px; height: 125px;">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4">
+            <a href="<?= base_url('wisata') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/wisata_home.png') ?>" style=" width: 125px; height: 125px; ">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4">
+            <a href="<?= base_url('blogs') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/text-lines.png') ?>" style=" width: 125px; height: 125px; ">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4">
+            <a href="<?= base_url('merchandise') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/box.png') ?>" style=" width: 125px; height: 125px; ">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4">
+            <a href="<?= base_url('verifteam') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/team.png') ?>" style=" width: 125px; height: 125px; ">
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-4">
+            <a href="<?= base_url('gallery') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/gallery.png') ?>" style=" width: 125px; height: 125px; ">
+              </div>
+            </a>
           </div>
         </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div><!-- /.card -->
       </div>
-      <!-- /.col-md-6 -->
       <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
+        <div class="row">
+          <h5>Event </h5>
+          <div class="col-lg-12">
 
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
+          <div class="col-lg-12">
+            <a href="<?= base_url('wisata') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/wisata_home.png') ?>" style=" width: 125px; height: 125px; ">
+              </div>
+            </a>
           </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+          <div class="col-lg-12">
+            <a href="<?= base_url('blogs') ?>">
+              <div class="box">
+                <img src="<?= base_url('assets/flaticon/text-lines.png') ?>" style=" width: 125px; height: 125px; ">
+              </div>
+            </a>
           </div>
         </div>
       </div>
-      <!-- /.col-md-6 -->
     </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
-</div>
-
-<div class="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div><!-- /.card -->
-      </div>
-      <!-- /.col-md-6 -->
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-6 -->
-    </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
-</div>
-
-<div class="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div><!-- /.card -->
-      </div>
-      <!-- /.col-md-6 -->
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-6 -->
-    </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
-</div>
-
-<div class="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the bulk of the card's
-              content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div><!-- /.card -->
-      </div>
-      <!-- /.col-md-6 -->
-      <div class="col-lg-6">
-        <div class="card">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h5 class="card-title m-0">Featured</h5>
-          </div>
-          <div class="card-body">
-            <h6 class="card-title">Special title treatment</h6>
-
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </div>
-      <!-- /.col-md-6 -->
-    </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
+  </div>
 </div>

@@ -4,10 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>AdminLTE 3 | Top Navigation</title>
+  <title>Never Say Old - Web</title>
   <link rel="stylesheet" href="<?=base_url('assets/')?>dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
   <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link rel="icon" href="<?= base_url('assets/') ?>img/logo.jpg">
 
   <script src="<?= base_url('assets/')?>plugins/jquery/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -111,13 +112,11 @@
         <div class="container">
           <div class="row mb-2" style="margin-top: 75px;">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark"> Top Navigation <small>Example 3.0</small></h1>
+              <h1 class="m-0 text-dark"> Home </h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Layout</a></li>
-                <li class="breadcrumb-item active">Top Navigation</li>
+                <li class="breadcrumb-item"><a href="<?=base_url()?>">Home</a></li>
               </ol>
             </div>
           </div>

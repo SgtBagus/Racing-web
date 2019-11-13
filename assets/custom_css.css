@@ -235,7 +235,6 @@ a.float:hover {
     padding: 10px;
     font-size: 15px;
     border: none;
-    border-radius: 21px;
     margin-bottom: 20px;
     -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, .28);
     -moz-box-shadow: 0 0 40px 0 rgba(0, 0, 0, .28);
@@ -294,7 +293,21 @@ p {
 }
 
 .label {
-    border-radius: 15px;
+    margin: 5px;
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
 }
 
 .img-detail-preview {

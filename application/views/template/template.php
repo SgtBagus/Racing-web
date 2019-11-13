@@ -16,6 +16,7 @@ $title = "NSO Project - Say Never Old";
   <title><?= $title ?></title>
   <link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
+  <link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" href="<?= base_url('assets/') ?>img/logo.jpg">
   <script src="<?= base_url('assets/') ?>plugins/jquery/jquery.min.js"></script>
@@ -66,7 +67,7 @@ $title = "NSO Project - Say Never Old";
             </li>
             <li class="nav-item">
               <a href="<?= base_url('kebijakanprivasi') ?>" class="nav-link">
-                <img src="<?= base_url('assets/flaticon/sidebar_logout.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                <img src="<?= base_url('assets/flaticon/sidebar_list.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                 <span>Kebijakan & Privasi</span>
               </a>
             </li>
@@ -159,17 +160,14 @@ $title = "NSO Project - Say Never Old";
             <p>Follow NSO Project</p>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
-                <a class="btn btn-social-icon btn-facebook round" style="margin: 2px">
-                  <img src="<?= base_url('assets/flaticon/facebook.png') ?>" style=" width: 30px; height: 30px; margin-bottom: 5px;">
+                <a href="https://www.facebook.com/MalangAdventureTrail/" class="btn btn-social-icon btn-facebook round" style="margin: 2px">
+                  <img src="<?= base_url('assets/flaticon/facebook.png') ?>" style=" width: 50px; height: 50px; margin-bottom: 5px;">
                 </a>
-                <a class="btn btn-social-icon btn-instagram round" style="margin: 2px">
-                  <img src="<?= base_url('assets/flaticon/instagram.png') ?>" style=" width: 30px; height: 30px; margin-bottom: 5px;">
+                <a href="https://www.instagram.com/malangadventuretrail/?hl=en" class="btn btn-social-icon btn-instagram round" style="margin: 2px">
+                  <img src="<?= base_url('assets/flaticon/instagram.png') ?>" style=" width: 50px; height: 50px; margin-bottom: 5px;">
                 </a>
-                <a class="btn btn-social-icon btn-twitter round" style="margin: 2px">
-                  <img src="<?= base_url('assets/flaticon/twitter.png') ?>" style=" width: 30px; height: 30px; margin-bottom: 5px;">
-                </a>
-                <a class="btn btn-social-icon btn-youtube round" style="margin: 2px">
-                  <img src="<?= base_url('assets/flaticon/youtube.png') ?>" style=" width: 30px; height: 30px; margin-bottom: 5px;">
+                <a href="http://www.youtube.com/c/EDIKAMPANG" class="btn btn-social-icon btn-youtube round" style="margin: 2px">
+                  <img src="<?= base_url('assets/flaticon/youtube.png') ?>" style=" width: 50px; height: 50px; margin-bottom: 5px;">
                 </a>
               </div>
             </div>
@@ -206,5 +204,65 @@ $title = "NSO Project - Say Never Old";
 </body>
 <script src="<?= base_url('assets/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="<?= base_url('assets/') ?>dist/js/adminlte.min.js"></script>
+<script src="<?= base_url('assets/') ?>plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url('assets/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+<script>
+  $(function() {
+    $('#datatable').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": false,
+      "ordering": true,
+      "info": false,
+      "scrollX": false,
+      "scrollY": true,
+      "language": {
+        "search": "<b> Pencarian : </b>",
+        "zeroRecords": function() {
+          return "<img src='https://icon-library.net/images/no-data-icon/no-data-icon-20.jpg' width='100px' height='100px'><p><b>Tidak Ada Data</b><p>";
+        },
+        "paginate": {
+          "previous": "<i class='fa fa-arrow-left'></i>",
+          "next": "<i class='fa fa-arrow-right'></i>"
+        },
+        "lengthMenu": '<label>Tampilkan <select name="datatable_length" aria-controls="datatable" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> Data</label>'
+      },
+    });
+  });
+
+  $("#btnFile").click(function() {
+    document.getElementById('imageFile').click();
+  });
+
+  $("#imageFile").change(function() {
+    imagePreview(this);
+    $('#preview').remove();
+  });
+
+  function imagePreview(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#preview_image').before('<br>' +
+          '<div align="center">' +
+          '<img class="img-circle" alt="User Image" src="' + e.target.result + '" alt="Third slide" height="250px" width="250px" style="margin-bottom: 10px" id="preview">' +
+          '</div>');
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  };
+  
+  function lazzy_loader(limit) {
+      var output = '<div class="row">' +
+        '<div class="col-xs-12" align="center">' +
+        '<h4> Memuat Data !</h4>' +
+        '</div>' +
+        '</div>';
+      $('#load_data_message').html(output);
+    }
+</script>
 
 </html>

@@ -22,7 +22,7 @@ class Event extends MY_Controller
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 
 		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id . " AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/view', $data);
@@ -36,7 +36,7 @@ class Event extends MY_Controller
 
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id . " AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/gallery', $data);
@@ -51,7 +51,7 @@ class Event extends MY_Controller
 
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id . " AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = 'Mendaftar Event : <b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/register', $data);
@@ -176,65 +176,66 @@ class Event extends MY_Controller
 				$photo = $this->mymodel->selectDataone('file', array('table_id' => $row['id'], 'table' => 'tbl_event'));
 				$rowteam = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $row['id'] . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
 
-				$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id']." AND b.approve = 'APPROVE' ");
+				$rowraider = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $row['id'] . " AND b.approve = 'APPROVE' ");
 
 				if ($row['statusEvent'] == 'BERJALAN') {
-					$status =  '<span class="label bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
+					$status =  '<span class="label_status bg-yellow round right" style="margin-left:5px">BERJALAN</span>';
 				} else if ($row['statusEvent'] == 'SELESAI') {
-					$status =  '<span class="label bg-green round right" style="margin-left:5px">SELESAI</span>';
+					$status =  '<span class="label_status bg-green round right" style="margin-left:5px">SELESAI</span>';
 				} else if ($row['statusEvent'] == 'BATAL') {
-					$status =  '<span class="label bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
+					$status =  '<span class="label_status bg-red round right" style="margin-left:5px">DIBATALKAN</span>';
 				} else {
-					$status =  '<span class="label bg-blue round right" style="margin-left:5px">DIBUKA</span>';
+					$status =  '<span class="label_status bg-blue round right" style="margin-left:5px">DIBUKA</span>';
 				}
-				
-				$title = strlen($row["title"]) > 20 ? substr($row["title"], 0, 20) . "..." : $row["title"];
-				
+
+				$title = strlen($row["title"]) > 25 ? substr($row["title"], 0, 25) . "..." : $row["title"];
+
 				$tanggal = "";
-				if ((!$row['tgleventStart']) || (!$row['tgleventEnd'])) { 
+				if ((!$row['tgleventStart']) || (!$row['tgleventEnd'])) {
 					$tanggal = '<b>Coming Soon</b>';
 				} else {
-					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> s/d </b>" . date('d M Y', strtotime($row['tgleventEnd']));
+					$tanggal = date('d M Y', strtotime($row['tgleventStart'])) . "<b> sampai </b>" . date('d M Y', strtotime($row['tgleventEnd']));
 				}
 
 				$output .= '
-				<a href="' . base_url("event/view/") . $row['id'] . '" class="a_black">
-				<div class="col-xs-6">
-				<div class="box">
-					<img class="img-even" src="' . $photo['url'] . '">
-					<div class="box-body">
-						<div class="row">
-							<div class="col-xs-12" align="center">
-								<b style="font-size:11px">' . $title . '</b><br>
-								<div class="row" align="center">
-								' . $status . '
+					<div class="col-md-6">
+					<a href="' . base_url("event/view/") . $row['id'] . '" class="a_black">
+						<div class="box">
+						' . $status . '
+							<img class="img-even" src="' . $photo['url'] . '">
+							<div class="box-body">
+								<div class="row">
+									<div class="col-md-12" align="center">
+										<b style="font-size:25px">' . $title . '</b><br>
+										<div class="row" align="center">
+										</div>
+										<div class="col-md-12" style="padding:0px 10px;">
+										</div>
+									</div>
 								</div>
-								<div class="col-md-12" style="padding:0px 10px;">
+								<hr style="margin-top:5px; margin-bottom: 5px;">
+								<div class="row">
+									<div class="col-md-12" align="center">
+										Tanggal Event :
+										<br>
+										<small>' . $tanggal . '</small>
+									</div>
+									<div class="col-md-12" align="center">
+										Pendaftar :
+										<b>
+										<img src="' . base_url('assets/flaticon/icon_rider.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowraider[0]['rowraider'] . '
+										<img src="' . base_url('assets/flaticon/icon_team.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowteam[0]['rowteam'] . '
+										</b>
+									</div>
 								</div>
 							</div>
 						</div>
-						<hr style="margin-top:5px; margin-bottom: 5px;">
-						<div class="row">
-							<div class="col-xs-12" align="center">
-								Tanggal Event :
-								<br>
-								<small>'.$tanggal.'</small>
-							</div>
-							<div class="col-xs-12" align="center">
-								Pendaftar :
-								<b>
-								<img src="' . base_url('assets/flaticon/icon_rider.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowraider[0]['rowraider'] . '
-								<img src="' . base_url('assets/flaticon/icon_team.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />' . $rowteam[0]['rowteam'] . '
-								</b>
-							</div>
-						</div>
+						</a>
 					</div>
-				</div>
-			</div>
-				</a>';
+					';
 			}
 		}
-		echo $output;
+		echo '<div class="row">' . $output . '</div>';
 	}
 
 	public function galleryfetch($event_id)
@@ -266,7 +267,7 @@ class Event extends MY_Controller
 										<b style="font-size:15px">' . $value . '</b><br>
                                     </div>
                                     <div class="col-xs-12" align="center">
-									Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="'.base_url('assets/flaticon/sidebar_picture.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar
+									Total : <b>' . $imagecount[0]['imagecount'] . '</b> <img src="' . base_url('assets/flaticon/sidebar_picture.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 3px;" /> Gambar
                                     </div>
                                 </div>
                             </div>
@@ -286,7 +287,7 @@ class Event extends MY_Controller
 
 		$data['register_id'] = $this->mymodel->selectDataone('tbl_event_register', array('event_id' => $data['tbl_event']['id']));
 		$data['rowteam'] = $this->mymodel->selectWithQuery("SELECT count(team_id) as rowteam from tbl_event_register WHERE event_id = '" . $id . "' AND approve = 'APPROVE' AND team_id NOT LIKE '0'");
-		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id." AND b.approve = 'APPROVE' ");
+		$data['rowraider'] = $this->mymodel->selectWithQuery("SELECT count(a.id) as rowraider from tbl_event_register_raider a INNER JOIN tbl_event_register b ON a.event_register_id = b.id WHERE b.event_id = " . $id . " AND b.approve = 'APPROVE' ");
 
 		$data['subpage'] = '<b>' . $data['tbl_event']['title'] . '</b>';
 		$this->template->load('template/template', 'event/rank', $data);
@@ -349,7 +350,7 @@ class Event extends MY_Controller
 				if ($fileRank) {
 					$filedownload = '<a href="' . base_url('download/downloadPDFPaket/') . $fileRank['id'] . '">
 						<button class="btn btn-lg btn-block btn-info btn-daftar" style="margin-bottom: 15px">
-							<img src="'.base_url('assets/flaticon/download.png').'" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />  Download
+							<img src="' . base_url('assets/flaticon/download.png') . '" style="display: unset; width: 15px; height: 15px; margin-bottom: 5px;" />  Download
 						</button>
 					</a>';
 				}

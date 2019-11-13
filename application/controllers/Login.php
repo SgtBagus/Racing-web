@@ -9,13 +9,13 @@ class Login extends MY_Controller
 	public function index()
 	{
 		$data['page'] = 'Login';
-		$this->template->load('template/login_template', 'login/index', $data);
+		$this->template->load('template/template', 'login/index', $data);
 	}
 
 	public function rider()
 	{
 		$data['page'] = 'Login';
-		$this->template->load('template/login_template', 'login/rider', $data);
+		$this->template->load('template/template', 'login/rider', $data);
 	}
 
 	public function act_login()
@@ -74,13 +74,13 @@ class Login extends MY_Controller
 	public function register()
 	{
 		$data['page'] = 'Daftar';
-		$this->template->load('template/login_template', 'login/register', $data);
+		$this->template->load('template/template', 'login/register', $data);
 	}
 
 	public function registerrider()
 	{
 		$data['page'] = 'Daftar';
-		$this->template->load('template/login_template', 'login/registerrider', $data);
+		$this->template->load('template/template', 'login/registerrider', $data);
 	}
 
 	public function validate()

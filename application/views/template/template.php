@@ -1,16 +1,23 @@
+<?php
+$title = "NSO Project - Say Never Old";
+?>
 <!DOCTYPE html>
 <html lang="en">
+<script>
+  if (screen.width <= 1081) {
+    window.location = "https://m.nsoproject.com";
+  }
+</script>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Never Say Old - Web</title>
+  <title><?= $title ?></title>
   <link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?= base_url('assets/') ?>custom_css.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <link rel="icon" href="<?= base_url('assets/') ?>img/logo.jpg">
-
   <script src="<?= base_url('assets/') ?>plugins/jquery/jquery.min.js"></script>
   <script src="<?= base_url('assets/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
 </head>
@@ -19,7 +26,7 @@
   <div class="wrapper">
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
       <div class="container">
-        <a href="index3.html" class="navbar-brand">
+        <a href="<?= base_url() ?>" class="navbar-brand">
           <img style="height:40px" src="<?= base_url('assets/img/') ?>logo2.jpg"></a>
         </a>
         <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,44 +35,10 @@
         <div class="collapse navbar-collapse order-3" id="navbarCollapse">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="<?= base_url() ?>" class="nav-link">
-                <img src="<?= base_url('assets/flaticon/sidebar_house.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                <span>Home</span>
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+              <a href="<?= base_url('event') ?>" class="nav-link">
                 <img src="<?= base_url('assets/flaticon/sidebar_star.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
                 Event
               </a>
-              <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                <li>
-                  <a href="<?= base_url('event') ?>" class="dropdown-item">
-                    <img src="<?= base_url('assets/flaticon/research.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                    Cari Event
-                  </a>
-                </li>
-                <li class="dropdown-submenu dropdown-hover">
-                  <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item">
-                    <img src="<?= base_url('assets/flaticon/research.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                    Verified
-                  </a>
-                  <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                    <li>
-                      <a href="<?= base_url('verifteam') ?>" class="dropdown-item">
-                        <img src="<?= base_url('assets/flaticon/sidebar_team.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                        Verified Team
-                      </a>
-                    </li>
-                    <li>
-                      <a href="<?= base_url('verifraider') ?>" class="dropdown-item">
-                        <img src="<?= base_url('assets/flaticon/sidebar_rider.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-                        Verified Rider
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
             </li>
             <li class="nav-item">
               <a href="<?= base_url('wisata') ?>" class="nav-link">
@@ -91,64 +64,99 @@
                 <span>Merchandise</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="<?= base_url('kebijakanprivasi') ?>" class="nav-link">
+                <img src="<?= base_url('assets/flaticon/sidebar_logout.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                <span>Kebijakan & Privasi</span>
+              </a>
+            </li>
           </ul>
         </div>
         <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-          <li class="nav-item">
-            <a href="<?= base_url('login/rider') ?>" class="nav-link">
-              <img src="<?= base_url('assets/flaticon/sidebar_locked.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-              <span>Login</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('login/registerrider') ?>" class="nav-link">
-              <img src="<?= base_url('assets/flaticon/sidebar_rider.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
-              <span>Register</span>
-            </a>
-          </li>
+          <?php if ($this->session->userdata('id')) {
+            $rider = $this->mymodel->selectDataone('tbl_raider', array('id' => $this->session->userdata('id')));
+            $photo = $this->mymodel->selectDataone('file', array('table' => 'tbl_raider', 'table_id' => $this->session->userdata('id')));
+            ?>
+            <li class="dropdown user user-menu" style="margin-top:5px">
+              <a href="#" data-toggle="dropdown" aria-expanded="false" style="color:white">
+                <img src="<?= $photo['url'] ?>" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?= $rider['name'] ?></span>
+              </a>
+              <ul class="dropdown-menu" style="margin-top: 20px;">
+                <li class="user-header">
+                  <img src="<?= $photo['url'] ?>" class="img-circle" alt="User Image">
+                  <p>
+                    <?= $rider['name'] ?>
+                    <?php if ($rider['verificacion'] == 'ENABLE') {
+                        echo '<img src="' . base_url('assets/flaticon/verified.png') . '" style=" width: 20px; height: 20px; margin-bottom: 5px;">';
+                      } ?>
+                    <small>Telah Mengikuti <b> <?= $rider['eventikut'] ?> Event </b></small>
+                  </p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <a href="<?= base_url('dashboard') ?>" class="btn btn-primary btn-block">
+                        <img src="<?= base_url('assets/flaticon/sidebar_user.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                        Profile
+                      </a>
+                    </div>
+                    <div class="col-md-6">
+                      <a href="<?= base_url('login/logoutRider') ?>" class="btn btn-danger btn-block">
+                        <img src="<?= base_url('assets/flaticon/sidebar_logout.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                        Logout
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          <?php } else { ?>
+            <li class="nav-item">
+              <a href="<?= base_url('login/rider') ?>" class="nav-link">
+                <img src="<?= base_url('assets/flaticon/sidebar_locked.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                <span>Login</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?= base_url('login/registerrider') ?>" class="nav-link">
+                <img src="<?= base_url('assets/flaticon/sidebar_rider.png') ?>" style=" width: 15px; height: 15px; margin-bottom: 5px;">
+                <span>Register</span>
+              </a>
+            </li>
+          <?php } ?>
         </ul>
       </div>
     </nav>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="">
       <div class="content-header">
         <div class="row mb-2" style="margin-top: 30px;">
         </div>
       </div>
-      <?= $contents ?>
+      <div class="col-md-12" style="margin-top:25px;">
+        <?= $contents ?>
+      </div>
       <marquee><?= MARQUEE ?></marquee>
     </div>
     <footer class="main-footer">
       <div class="container" style="margin-top: 15px">
         <div class="row">
-          <div class="col-md-4 col-sm-6 col-xs-12 text-center">
+          <div class="col-md-12 text-center">
             <img style="height:150px" src="<?= base_url('assets/img/') ?>logo2.jpg"></a>
-            <p>Copyright <i class="fa fa-copyright"></i> 2019</p>
           </div>
-          <div class="col-lg-4 text-center">
-            <h2><b>NEVER SAY OLD</b></h2>
+          <div class="col-md-12 text-center" style="margin-top:15px;">
+            <p>Download On</p>
             <div class="row">
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a href="<?= base_url() ?>" style="color: white">Home</a>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a href="<?= base_url('event') ?>" style="color: white" target="_blank">Event</a>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a href="<?= base_url('wisata') ?>" style="color: white">Wisata</a>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a href="<?= base_url('blogs') ?>" style="color: white">News</a>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a href="<?= base_url('gallery') ?>" style="color: white">Gallery</a>
-              </div>
-              <div class="col-md-6 col-sm-6 col-xs-6">
-                <a href="<?= base_url('merchandise') ?>" style="color: white">Merchandise</a>
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <a class="btn btn-social-icon btn-facebook round" style="margin: 2px">
+                  <img src="<?= base_url('assets/play-store.png') ?>" style="height: 80px; margin-bottom: 5px;">
+                </a>
+                <a class="btn btn-social-icon btn-instagram round" style="margin: 2px">
+                  <img src="<?= base_url('assets/app-store.png') ?>" style="height: 80px; margin-bottom: 5px;">
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 text-center">
-            <h2><b>IKUTI KAMI</b></h2>
+          <div class="col-md-12 text-center" style="margin-top:0px;">
+            <p>Follow NSO Project</p>
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <a class="btn btn-social-icon btn-facebook round" style="margin: 2px">
@@ -163,6 +171,32 @@
                 <a class="btn btn-social-icon btn-youtube round" style="margin: 2px">
                   <img src="<?= base_url('assets/flaticon/youtube.png') ?>" style=" width: 30px; height: 30px; margin-bottom: 5px;">
                 </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center" style="margin-top:0px;">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <p>
+                  | <a href="<?= base_url() ?>" style="color: white; padding:0px 5px;"> Home </a> |
+                  <a href="<?= base_url('event') ?>" style="color: white; padding:0px 5px;"> Event </a> |
+                  <a href="<?= base_url('kebijakan-dan-privasi') ?>" style="color: white; padding:0px 5px;"> Verified Rider </a> |
+                  <a href="<?= base_url('kebijakan-dan-privasi') ?>" style="color: white; padding:0px 5px;"> Verified Team </a> |
+                  <a href="<?= base_url('wisata') ?>" style="color: white; padding:0px 5px;"> Wisata </a> |
+                  <a href="<?= base_url('blogs') ?>" style="color: white; padding:0px 5px;"> News </a> |
+                  <a href="<?= base_url('gallery') ?>" style="color: white; padding:0px 5px;">Gallery</a> |
+                  <a href="<?= base_url('merchandise') ?>" style="color: white; padding:0px 5px;"> Merchandise </a> |
+                  <a href="<?= base_url('kebijakan-dan-privasi') ?>" style="color: white; padding:0px 5px;"> Kebijakan Dan Privasi </a> |
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 text-center" style="margin-top:0px;">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <p>
+                  Copyright © 2019 by <a style="color:#fff;" href="<?= base_url() ?>">NSO Project - Never Say Old</a> All Right Reserved
+                </p>
               </div>
             </div>
           </div>
